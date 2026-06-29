@@ -16,6 +16,8 @@ export interface CalendarEvent {
 }
 
 export const events: CalendarEvent[] = [
+  // — June 2026 —
+  { date: '2026-07-04', title: 'Test edit inline',          notes: 'All scales · 10 am – 6 pm' },
   // — July 2026 —
   { date: '2026-07-04', title: 'Open Practice',          notes: 'All scales · 10 am – 6 pm' },
   { date: '2026-07-05', title: 'Open Practice',          notes: 'All scales · 10 am – 6 pm' },
