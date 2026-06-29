@@ -1,6 +1,12 @@
 @import "tailwindcss";
 
-/* Smooth scroll + offset for fixed header (4rem = 64px header + small buffer) */
+/* ─── Brand tokens (Tailwind v4 @theme) ──────────────────────────────────── */
+@theme {
+  --color-track:   #0a0a0a;   /* main page bg   → bg-track   */
+  --color-surface: #161616;   /* card surfaces  → bg-surface  */
+}
+
+/* ─── Smooth scroll + header offset ─────────────────────────────────────── */
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 4.5rem;
@@ -13,12 +19,12 @@ html {
   left: 1rem;
   z-index: 100;
   padding: 0.5rem 1rem;
-  background: #fff;
-  color: #1d4ed8;
+  background: #dc2626;
+  color: #fff;
   font-size: 0.875rem;
   font-weight: 600;
   text-decoration: underline;
-  border: 2px solid #1d4ed8;
+  border: 2px solid #fff;
   border-radius: 0.25rem;
   transition: top 0.1s;
 }
@@ -26,10 +32,22 @@ html {
   top: 1rem;
 }
 
-/* ─── Focus indicator (WCAG 2.4.7 / 2.4.11) ─────────────────────────────── */
+/* ─── Focus indicator — red for brand consistency (WCAG 2.4.7 / 2.4.11) ─── */
 :focus-visible {
-  outline: 3px solid #1d4ed8;
+  outline: 3px solid #dc2626;
   outline-offset: 3px;
+}
+
+/* ─── Racing-stripe section accent ──────────────────────────────────────── */
+/* Subtle diagonal stripe overlay used on alternating sections */
+.racing-stripe {
+  background-image: repeating-linear-gradient(
+    -55deg,
+    transparent,
+    transparent 14px,
+    rgba(220, 38, 38, 0.025) 14px,
+    rgba(220, 38, 38, 0.025) 28px
+  );
 }
 
 /* ─── Reduced motion (WCAG 2.3.3) ───────────────────────────────────────── */
@@ -44,39 +62,43 @@ html {
   }
 }
 
-/* ─── Prose content (Markdown rendered from MDX) ────────────────────────── */
+/* ─── Prose content (dark theme — MDX rendered via @mdx-js/react) ────────── */
 .prose h1 {
   margin-bottom: 1.5rem;
   font-size: 2.25rem;
-  font-weight: 700;
-  color: #111827;
-  line-height: 1.2;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.15;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
 }
 .prose h2 {
   margin-top: 2.5rem;
   margin-bottom: 0.75rem;
-  font-size: 1.5rem;
+  font-size: 1.375rem;
   font-weight: 700;
-  color: #111827;
+  color: #ffffff;
   line-height: 1.25;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 .prose h3 {
   margin-top: 2rem;
   margin-bottom: 0.5rem;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-weight: 600;
-  color: #111827;
+  color: #e4e4e7;
 }
 .prose p {
   margin-bottom: 1rem;
-  color: #374151;
+  color: #a1a1aa;
   line-height: 1.75;
 }
 .prose ul,
 .prose ol {
   margin-bottom: 1rem;
   padding-left: 1.5rem;
-  color: #374151;
+  color: #a1a1aa;
 }
 .prose ul {
   list-style-type: disc;
@@ -90,33 +112,36 @@ html {
 }
 .prose strong {
   font-weight: 700;
-  color: #111827;
+  color: #ffffff;
 }
 .prose a {
-  color: #1d4ed8;
+  color: #f87171;
   text-decoration: underline;
 }
 .prose a:hover {
-  color: #1e3a8a;
+  color: #fca5a5;
 }
-/* Table cells (the table element itself is wrapped by mdxComponents) */
+/* Table cells (table element is wrapped by mdxComponents) */
 .prose th {
   padding: 0.625rem 1rem;
   text-align: left;
-  font-weight: 600;
-  color: #111827;
-  background-color: #f3f4f6;
-  border-bottom: 2px solid #d1d5db;
+  font-weight: 700;
+  color: #dc2626;
+  background-color: #1a1a1a;
+  border-bottom: 2px solid #dc2626;
   white-space: nowrap;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
 }
 .prose td {
   padding: 0.625rem 1rem;
-  color: #374151;
-  border-bottom: 1px solid #e5e7eb;
+  color: #a1a1aa;
+  border-bottom: 1px solid #2a2a2a;
 }
 .prose tbody tr:last-child td {
   border-bottom: none;
 }
 .prose tbody tr:nth-child(even) td {
-  background-color: #f9fafb;
+  background-color: #1a1a1a;
 }

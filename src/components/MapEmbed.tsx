@@ -4,12 +4,12 @@ interface Props {
 }
 
 export default function MapEmbed({
-  address = '1 Parliament St, Toronto, ON M5A 1C1',
+  address = '2481 Kaladar Ave, Ottawa, ON',
 }: Props) {
   const query = encodeURIComponent(address);
 
   return (
-    <figure className="rounded-lg overflow-hidden border border-gray-200">
+    <figure className="rounded-lg overflow-hidden border border-white/10">
       <iframe
         src={`https://maps.google.com/maps?q=${query}&output=embed&z=16`}
         width="100%"
@@ -21,8 +21,8 @@ export default function MapEmbed({
         title={`Map showing ${address}`}
         aria-label={`Google Map showing the location of ${address}`}
       />
-      <figcaption className="px-3 py-2 text-sm text-gray-600 bg-gray-50 border-t border-gray-200">
-        <address className="not-italic">{address}</address>
+      <figcaption className="px-3 py-2 text-sm text-zinc-400 bg-[#161616] border-t border-white/10">
+        <address className="not-italic">{address} &mdash; Unit 103</address>
       </figcaption>
     </figure>
   );

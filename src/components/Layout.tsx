@@ -11,7 +11,7 @@ interface Props {
 export default function Layout({ children }: Props) {
   return (
     <MDXProvider components={mdxComponents}>
-      <div className="min-h-screen bg-white text-gray-900 flex flex-col">
+      <div className="min-h-screen bg-track text-white flex flex-col">
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>

@@ -14,7 +14,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeId, setActiveId] = useState(SECTION_IDS[0] ?? '');
 
-  // Scroll-spy: mark the last section whose top is above the viewport centre
+  // Scroll-spy: mark the last section whose top is above the viewport threshold
   useEffect(() => {
     function update() {
       const threshold = window.scrollY + HEADER_H + 10;
@@ -31,26 +31,33 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-40 bg-[#0a0a0a] border-b-2 border-red-600 shadow-[0_4px_24px_rgba(220,38,38,0.2)]">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
 
-          {/* Site name / logo */}
+          {/* ── Logo ─────────────────────────────────────────────────────── */}
           <a
             href="#home"
-            className="text-xl font-bold text-gray-900 hover:text-gray-700"
-            aria-label="Community Club – scroll to top"
+            className="flex items-center gap-2.5"
+            aria-label="GFX RACING – scroll to top"
           >
-            Community Club
+            {/* Double-chevron racing mark */}
+            <svg width="22" height="24" viewBox="0 0 22 24" aria-hidden="true" fill="none">
+              <path d="M2 3L11 11L20 3" stroke="#dc2626" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M2 11L11 19L20 11" stroke="#dc2626" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            <span className="text-xl font-black tracking-tighter text-white uppercase leading-none">
+              GFX<span className="text-red-500">★</span>RACING
+            </span>
           </a>
 
-          {/* Mobile menu toggle */}
+          {/* ── Mobile menu toggle ─────────────────────────────────────── */}
           <button
             type="button"
             onClick={() => setMenuOpen((o) => !o)}
             aria-expanded={menuOpen}
             aria-controls="mobile-nav"
-            className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:bg-gray-100"
+            className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-zinc-400 hover:text-white hover:bg-white/10"
           >
             <span className="sr-only">{menuOpen ? 'Close menu' : 'Open menu'}</span>
             {menuOpen ? (
@@ -64,20 +71,19 @@ export default function Header() {
             )}
           </button>
 
-          {/* Desktop nav */}
-          <nav aria-label="Main navigation" className="hidden md:flex items-center gap-6">
+          {/* ── Desktop nav ───────────────────────────────────────────── */}
+          <nav aria-label="Main navigation" className="hidden md:flex items-center">
             {navLinks.map(({ href, label }) => {
               const active = activeId === href.slice(1);
               return (
                 <a
                   key={href}
                   href={href}
-                  // aria-current="location" is the correct value for in-page anchor links
                   aria-current={active ? 'location' : undefined}
                   className={
                     active
-                      ? 'text-sm font-medium text-blue-700 underline underline-offset-4'
-                      : 'text-sm font-medium text-gray-700 hover:text-gray-900'
+                      ? 'px-4 py-5 text-xs font-bold text-red-500 uppercase tracking-widest border-b-2 border-red-500 transition-colors'
+                      : 'px-4 py-5 text-xs font-bold text-zinc-400 uppercase tracking-widest hover:text-white border-b-2 border-transparent transition-colors'
                   }
                 >
                   {label}
@@ -88,14 +94,14 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile nav panel */}
+      {/* ── Mobile nav panel ─────────────────────────────────────────────── */}
       {menuOpen && (
         <nav
           id="mobile-nav"
           aria-label="Mobile navigation"
-          className="md:hidden border-t border-gray-200 bg-white"
+          className="md:hidden border-t border-white/10 bg-[#0a0a0a]"
         >
-          <ul className="max-w-5xl mx-auto px-4 py-3 space-y-1" role="list">
+          <ul className="max-w-6xl mx-auto px-4 py-3 space-y-1" role="list">
             {navLinks.map(({ href, label }) => {
               const active = activeId === href.slice(1);
               return (
@@ -106,8 +112,8 @@ export default function Header() {
                     onClick={() => setMenuOpen(false)}
                     className={
                       active
-                        ? 'block px-3 py-2 rounded-md text-sm font-medium bg-blue-50 text-blue-700'
-                        : 'block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50'
+                        ? 'block px-4 py-2.5 rounded-md text-xs font-bold text-red-500 bg-red-500/10 uppercase tracking-widest border-l-2 border-red-500'
+                        : 'block px-4 py-2.5 rounded-md text-xs font-bold text-zinc-400 uppercase tracking-widest hover:text-white hover:bg-white/10 border-l-2 border-transparent'
                     }
                   >
                     {label}
@@ -121,3 +127,4 @@ export default function Header() {
     </header>
   );
 }
+
