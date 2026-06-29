@@ -36,7 +36,7 @@ jobs:
         env:
           # Keep this matching the repo name so all asset/link paths resolve correctly.
           # If you set up a custom domain on GitHub Pages, change this to /
-          SITE_BASE: /site-explore
+          SITE_BASE: /gfxracing
 
       - name: Copy index.html → 404.html (SPA routing fallback for GitHub Pages)
         run: cp dist/index.html dist/404.html
