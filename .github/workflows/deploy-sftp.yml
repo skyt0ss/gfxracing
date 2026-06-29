@@ -1,0 +1,51 @@
+name: Deploy via SFTP
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Build and deploy via SFTP
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        run: npm run build
+        env:
+          # Set to / when deploying to the root of a custom domain.
+          # Change to /subdirectory if the site lives under a path.
+          SITE_BASE: /
+
+      - name: Deploy via SFTP
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        with:
+          server: ${{ secrets.SFTP_HOST }}
+          username: ${{ secrets.SFTP_USERNAME }}
+          password: ${{ secrets.SFTP_PASSWORD }}
+          port: ${{ secrets.SFTP_PORT }}
+          local_path: ./dist/*
+          remote_path: ${{ secrets.SFTP_REMOTE_PATH }}
+          sftp_only: true
+          # To use an SSH key instead of a password:
+          # 1. Remove the `password` line above
+          # 2. Add: ssh_private_key: ${{ secrets.SFTP_SSH_KEY }}
+
+# Required GitHub repository secrets:
+#   SFTP_HOST        – hostname or IP of the SFTP server
+#   SFTP_USERNAME    – SFTP username
+#   SFTP_PASSWORD    – SFTP password  (or use SFTP_SSH_KEY, see above)
+#   SFTP_PORT        – port number (typically 22)
+#   SFTP_REMOTE_PATH – absolute remote path, e.g. /var/www/html

@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+/* Smooth scroll + offset for fixed header (4rem = 64px header + small buffer) */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4.5rem;
+}
+
+/* ─── Skip-to-content link (WCAG 2.4.1) ─────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  background: #fff;
+  color: #1d4ed8;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: underline;
+  border: 2px solid #1d4ed8;
+  border-radius: 0.25rem;
+  transition: top 0.1s;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* ─── Focus indicator (WCAG 2.4.7 / 2.4.11) ─────────────────────────────── */
+:focus-visible {
+  outline: 3px solid #1d4ed8;
+  outline-offset: 3px;
+}
+
+/* ─── Reduced motion (WCAG 2.3.3) ───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Prose content (Markdown rendered from MDX) ────────────────────────── */
+.prose h1 {
+  margin-bottom: 1.5rem;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.2;
+}
+.prose h2 {
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.25;
+}
+.prose h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+}
+.prose p {
+  margin-bottom: 1rem;
+  color: #374151;
+  line-height: 1.75;
+}
+.prose ul,
+.prose ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  color: #374151;
+}
+.prose ul {
+  list-style-type: disc;
+}
+.prose ol {
+  list-style-type: decimal;
+}
+.prose li {
+  margin-bottom: 0.375rem;
+  line-height: 1.75;
+}
+.prose strong {
+  font-weight: 700;
+  color: #111827;
+}
+.prose a {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+.prose a:hover {
+  color: #1e3a8a;
+}
+/* Table cells (the table element itself is wrapped by mdxComponents) */
+.prose th {
+  padding: 0.625rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #111827;
+  background-color: #f3f4f6;
+  border-bottom: 2px solid #d1d5db;
+  white-space: nowrap;
+}
+.prose td {
+  padding: 0.625rem 1rem;
+  color: #374151;
+  border-bottom: 1px solid #e5e7eb;
+}
+.prose tbody tr:last-child td {
+  border-bottom: none;
+}
+.prose tbody tr:nth-child(even) td {
+  background-color: #f9fafb;
+}

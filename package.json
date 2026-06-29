@@ -1,0 +1,29 @@
+{
+  "name": "site-explore",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "tsc --noEmit",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@mdx-js/react": "^3.1.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@mdx-js/rollup": "^3.1.0",
+    "@tailwindcss/vite": "^4.1.0",
+    "@types/mdx": "^2.0.13",
+    "@types/node": "^26.0.1",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^4.5.0",
+    "tailwindcss": "^4.1.0",
+    "typescript": "~5.8.3",
+    "vite": "^6.3.0"
+  }
+}
