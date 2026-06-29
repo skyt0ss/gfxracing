@@ -1,4 +1,17 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { events } from '../../content/events';
+
+// ─── Date helpers (duplicated from ScheduleSection to keep component self-contained) ─
+function parseLocalDate(iso: string): Date {
+  const [y, m, d] = iso.split('-').map(Number);
+  return new Date(y, (m ?? 1) - 1, d ?? 1);
+}
+const MONTH_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const DAY_SHORT   = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+function formatShortDate(iso: string): string {
+  const d = parseLocalDate(iso);
+  return `${DAY_SHORT[d.getDay()]} ${MONTH_SHORT[d.getMonth()]} ${d.getDate()}`;
+}
 
 // ─── Placeholder video ────────────────────────────────────────────────────────
 // Free stock footage – Pixabay license (no attribution required).
@@ -25,6 +38,15 @@ export default function VideoHero({
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [videoReady, setVideoReady] = useState(false);
+
+  // Compute next upcoming event for the hero badge
+  const nextEvent = useMemo(() => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return events
+      .filter((e) => parseLocalDate(e.date) >= today)
+      .sort((a, b) => parseLocalDate(a.date).getTime() - parseLocalDate(b.date).getTime())[0];
+  }, []);
 
   // Respect prefers-reduced-motion: only autoplay if the user hasn't opted out
   useEffect(() => {
@@ -102,7 +124,7 @@ export default function VideoHero({
       {/* ── Hero content ─────────────────────────────────────────────────── */}
       <div className="relative z-10 text-center text-white px-6 sm:px-12 max-w-4xl mx-auto">
         <p className="text-xs sm:text-sm uppercase tracking-[0.25em] text-white/60 mb-4 font-medium">
-          Toronto, Ontario
+          Ottawa, Ontario
         </p>
 
         <h1
@@ -112,9 +134,31 @@ export default function VideoHero({
           {title}
         </h1>
 
-        <p className="text-lg sm:text-xl text-white/80 max-w-xl mx-auto drop-shadow mb-10">
+        <p className="text-lg sm:text-xl text-white/80 max-w-xl mx-auto drop-shadow mb-8">
           {tagline}
         </p>
+
+        {/* ── Next Race badge ───────────────────────────────────────────── */}
+        {nextEvent && (
+          <a
+            href="#schedule"
+            className="inline-flex items-center gap-2.5 text-sm text-white/60 hover:text-white/90 transition-colors group mb-8"
+          >
+            <span
+              aria-hidden="true"
+              className="w-2 h-2 rounded-full bg-red-500 motion-safe:animate-pulse shrink-0"
+            />
+            <span>
+              Next Race:
+              <span className="font-semibold text-white/85 ml-1">
+                {formatShortDate(nextEvent.date)}
+              </span>
+            </span>
+            <span aria-hidden="true" className="text-white/40 group-hover:translate-x-0.5 transition-transform">
+              →
+            </span>
+          </a>
+        )}
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
@@ -124,10 +168,10 @@ export default function VideoHero({
             Join the Club
           </a>
           <a
-            href="#about"
+            href="#schedule"
             className="px-8 py-3 rounded-full border-2 border-white/70 text-white font-semibold hover:bg-white hover:text-gray-900 transition-colors"
           >
-            Learn More
+            View Schedule
           </a>
         </div>
       </div>

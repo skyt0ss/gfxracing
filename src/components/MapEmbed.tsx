@@ -1,10 +1,13 @@
 interface Props {
   /** Full address shown as a caption below the map */
   address?: string;
+  /** Iframe height in pixels */
+  height?: number;
 }
 
 export default function MapEmbed({
   address = '2481 Kaladar Ave, Ottawa, ON',
+  height = 320,
 }: Props) {
   const query = encodeURIComponent(address);
 
@@ -13,7 +16,7 @@ export default function MapEmbed({
       <iframe
         src={`https://maps.google.com/maps?q=${query}&output=embed&z=16`}
         width="100%"
-        height="320"
+        height={height}
         style={{ border: 0, display: 'block' }}
         allowFullScreen
         loading="lazy"

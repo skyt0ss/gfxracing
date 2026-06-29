@@ -1,4 +1,4 @@
-import AboutContent from '../content/about.mdx';
+import AboutContent from '../../content/about.mdx';
 
 export default function AboutSection() {
   return (

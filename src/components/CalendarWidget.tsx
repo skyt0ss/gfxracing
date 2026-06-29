@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import type { CalendarEvent } from '../content/events';
+import type { CalendarEvent } from '../../content/events';
 
 interface Props {
   events: CalendarEvent[];
