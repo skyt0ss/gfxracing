@@ -108,7 +108,7 @@ export default function ScheduleSection() {
               Monthly View
             </p>
             {/* Scale the calendar up using a larger wrapper */}
-            <div className="[&_table]:w-full [&_th]:!pb-2 [&_button]:!w-10 [&_button]:!h-10 [&_td]:!w-10 [&_td]:!h-10">
+            <div className="[&_table]:w-full [&_th]:pb-2! [&_button]:w-10! [&_button]:h-10! [&_td]:w-10! [&_td]:h-10!">
               <CalendarWidget events={events} />
             </div>
           </div>
@@ -124,11 +124,11 @@ export default function ScheduleSection() {
                   const d = parseLocalDate(event.date);
                   return (
                     <li
-                      key={i}
+                      key={`${event.date}-${event.title}`}
                       className="bg-surface rounded-xl px-4 py-3 border border-white/5 flex items-start gap-3"
                     >
                       {/* Date chip */}
-                      <div className="bg-red-600/15 border border-red-600/20 rounded-lg text-center px-2 py-1.5 shrink-0 min-w-[42px]">
+                      <div className="bg-red-600/15 border border-red-600/20 rounded-lg text-center px-2 py-1.5 shrink-0 min-w-10.5">
                         <p className="text-red-400 text-[9px] font-black uppercase leading-none">
                           {MONTH_SHORT[d.getMonth()]}
                         </p>

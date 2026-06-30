@@ -24,7 +24,7 @@ export default function MapEmbed({
         title={`Map showing ${address}`}
         aria-label={`Google Map showing the location of ${address}`}
       />
-      <figcaption className="px-3 py-2 text-sm text-zinc-400 bg-[#161616] border-t border-white/10">
+      <figcaption className="px-3 py-2 text-sm text-zinc-400 bg-surface border-t border-white/10">
         <address className="not-italic">{address} &mdash; Unit 103</address>
       </figcaption>
     </figure>

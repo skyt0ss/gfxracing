@@ -4,12 +4,16 @@
 @theme {
   --color-track:   #0a0a0a;   /* main page bg   → bg-track   */
   --color-surface: #161616;   /* card surfaces  → bg-surface  */
+  /* Brand font — Barlow Condensed Black Italic (loaded via Google Fonts).
+     Generates the utility class `font-brand` in Tailwind v4.             */
+  --font-brand: 'Barlow Condensed', sans-serif;
 }
 
 /* ─── Smooth scroll + header offset ─────────────────────────────────────── */
+/* scroll-padding-top matches the compact (scrolled) header height — 4rem = 64px */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 4.5rem;
+  scroll-padding-top: 4rem;
 }
 
 /* ─── Skip-to-content link (WCAG 2.4.1) ─────────────────────────────────── */

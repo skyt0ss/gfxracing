@@ -70,6 +70,7 @@ export default function MembershipSection() {
           {plans.map((plan) => (
             <div
               key={plan.key}
+              aria-label={`${plan.label}: ${plan.price} ${plan.period}`}
               className={[
                 'relative rounded-2xl overflow-hidden flex flex-col',
                 plan.featured

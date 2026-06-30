@@ -1,24 +1,30 @@
+import BrandBadge from './BrandBadge';
+
 const footerLinks = [
   { href: '#home',       label: 'Home'            },
   { href: '#schedule',   label: 'Schedule'        },
   { href: '#about',      label: 'About'           },
   { href: '#membership', label: 'Membership'      },
   { href: '#classes',    label: 'Classes & Rules' },
+  { href: '#shop',       label: 'Shop'            },
 ];
 
 export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#0a0a0a] border-t-2 border-red-600">
+    <footer className="bg-track border-t-2 border-red-600">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid sm:grid-cols-3 gap-8 mb-8">
 
           {/* Brand */}
           <div>
-            <p className="text-xl font-black tracking-tighter text-white uppercase mb-2">
-              GFX<span className="text-red-500">★</span>RACING
-            </p>
+            <div className="flex items-center gap-2.5 mb-2">
+              <BrandBadge className="w-7 h-8 shrink-0" />
+              <p className="font-brand italic text-2xl font-black text-white uppercase leading-none">
+                GFX<span className="text-red-500 mr-1">★</span>RACING
+              </p>
+            </div>
             <p className="text-xs text-zinc-500 leading-relaxed mt-1">
               Indoor 1/28 &middot; 1/10 &amp; 1/12<br />
               R/C Racing Tracks

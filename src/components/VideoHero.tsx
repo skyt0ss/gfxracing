@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { events } from '../../content/events';
+import BrandBadge from './BrandBadge';
 
 // ─── Date helpers (duplicated from ScheduleSection to keep component self-contained) ─
 function parseLocalDate(iso: string): Date {
@@ -98,7 +99,7 @@ export default function VideoHero({
           the video cannot play (reduced motion, CORS block, etc.).          */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-br from-gray-950 via-gray-800 to-slate-900"
+        className="absolute inset-0 bg-linear-to-br from-gray-950 via-gray-800 to-slate-900"
       />
 
       {/* ── Background video (decorative, aria-hidden) ───────────────────── */}
@@ -123,16 +124,21 @@ export default function VideoHero({
 
       {/* ── Hero content ─────────────────────────────────────────────────── */}
       <div className="relative z-10 text-center text-white px-6 sm:px-12 max-w-4xl mx-auto">
-        <p className="text-xs sm:text-sm uppercase tracking-[0.25em] text-white/60 mb-4 font-medium">
-          Ottawa, Ontario
-        </p>
-
         <h1
           id="hero-heading"
-          className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight drop-shadow-lg mb-6"
+          className="font-brand italic text-6xl sm:text-7xl lg:text-8xl font-black tracking-wide drop-shadow-lg mb-6"
         >
-          {title}
+          {/* {title} */}
+          {/* GFX<span className="text-red-500 mr-3">★</span>RACING */}
+          GFX<span className="mr-3">★</span>RACING
         </h1>
+
+        {/* Brand badge graphic — matches the venue logo / entrance panel */}
+        <BrandBadge className="w-16 h-19 sm:w-20 sm:h-23.75 mx-auto mb-14 drop-shadow-lg" />
+
+        <p className="text-xs sm:text-sm uppercase tracking-[0.25em] text-white/60 mb-3 font-medium">
+          Ottawa, Ontario
+        </p>
 
         <p className="text-lg sm:text-xl text-white/80 max-w-xl mx-auto drop-shadow mb-8">
           {tagline}
@@ -142,7 +148,7 @@ export default function VideoHero({
         {nextEvent && (
           <a
             href="#schedule"
-            className="inline-flex items-center gap-2.5 text-sm text-white/60 hover:text-white/90 transition-colors group mb-8"
+            className="inline-flex items-center gap-2.5 text-md text-white/75 hover:text-white transition-colors group mb-14 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/15 hover:bg-white/15"
           >
             <span
               aria-hidden="true"
