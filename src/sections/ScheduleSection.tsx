@@ -120,7 +120,7 @@ export default function ScheduleSection() {
             </p>
             {sideList.length > 0 ? (
               <ul className="space-y-2.5" role="list">
-                {sideList.map((event, i) => {
+                {sideList.map((event) => {
                   const d = parseLocalDate(event.date);
                   return (
                     <li

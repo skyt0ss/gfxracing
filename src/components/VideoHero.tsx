@@ -33,7 +33,7 @@ interface Props {
 }
 
 export default function VideoHero({
-  title = 'GFX★RACING',
+  // title = 'GFX★RACING',
   tagline = 'Ottawa’s indoor R/C racing facility — 1/28, 1/10 & 1/12 scale tracks, all skill levels welcome.',
 }: Props) {
   const videoRef = useRef<HTMLVideoElement>(null);
