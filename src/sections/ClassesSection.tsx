@@ -95,7 +95,7 @@ export default function ClassesSection() {
         {/* Scale cards */}
         <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
           <ScaleCard scale="1/28" subtitle="Mini carpet racing" classes={CLASSES_1_28} />
-          <ScaleCard scale="1/12 – 1/10" subtitle="Full-size carpet sprint" classes={CLASSES_1_10_1_12} />
+          <ScaleCard scale="1/12 - 1/10" subtitle="Carpet racing" classes={CLASSES_1_10_1_12} />
         </div>
 
         <p className="mt-10 text-center text-xs text-zinc-600">
