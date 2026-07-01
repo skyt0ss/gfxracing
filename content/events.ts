@@ -16,18 +16,12 @@ export interface CalendarEvent {
 }
 
 export const events: CalendarEvent[] = [
-  // — July 2026 —
-  { date: "2026-07-02", title: "Example event",          notes: "You can add a custom description and notes here. Or even get Bodi a burger right MEOW! · 10 am - 6 pm" },
-  { date: "2026-07-04", title: "Open Practice",          notes: "All scales · 10 am - 6 pm" },
-  { date: "2026-07-11", title: "Club Race Day",           notes: "1/28 · 10 am │ 1/10-1/12 · 1 pm" },
-  { date: "2026-07-12", title: "Open Practice",          notes: "All scales · 10 am - 6 pm" },
-  // — August 2026 —
-  { date: "2026-08-01", title: "Open Practice",          notes: "All scales · 10 am - 6 pm" },
-  { date: "2026-08-02", title: "Club Race Day",           notes: "1/28 · 10 am │ 1/10-1/12 · 1 pm" },
-  { date: "2026-08-08", title: "Summer Series — Rd 2", notes: "All classes · Doors open 9 am" },
-  { date: "2026-08-09", title: "Open Practice",          notes: "All scales · 10 am - 6 pm" },
-  { date: "2026-08-15", title: "Club Race Day",           notes: "1/28 · 10 am │ 1/10-1/12 · 1 pm" },
-  { date: "2026-08-16", title: "Open Practice",          notes: "All scales · 10 am - 6 pm" },
-  { date: "2026-08-22", title: "Summer Series — Final", notes: "Championship round · Doors open 9 am" },
-  { date: "2026-08-23", title: "Open Practice",          notes: "All scales · 10 am - 6 pm" },
+  /**
+  UPDATE HERE
+  **/
+    { date: "2026-08-08", title: "Bodi's heist",          notes: "Nothing to see here. Just keep moving." },
+  { date: "2026-08-09", title: "Bodi's second heist",          notes: "Keep the party going!" },
+  /**
+  END: UPDATE HERE
+  **/
 ];
