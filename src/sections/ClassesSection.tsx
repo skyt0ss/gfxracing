@@ -10,13 +10,7 @@ const CLASSES_1_28 = [
 ] as const;
 
 const CLASSES_1_10_1_12 = [
-  'Losi Nascar',
-  'Stock TC 21.5',
-  'Pan Car SuperStock',
-  'GT12',
-  'VTA',
-  'TC Superstock',
-  'F1',
+  'TBD'
 ] as const;
 
 interface ScaleCardProps {
