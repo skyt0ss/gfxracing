@@ -19,9 +19,9 @@ export const events: CalendarEvent[] = [
   /**
   UPDATE HERE
   **/
-    { date: "2026-08-08", title: "Bodi's heist",          notes: "Nothing to see here. Just keep moving." },
-  { date: "2026-08-09", title: "Bodi's second heist",          notes: "Keep the party going!" },
-  { date: "2026-08-16", title: "Bodi's 3rd heist",          notes: "Keep the party going again!" },
+    { date: "2026-08-08", title: "Bodi's heist",          notes: "Doors open at 8:00am.  Qualifying starts at 10:30am" },
+  { date: "2026-08-09", title: "Bodi's second heist",          notes: "Doors open at 8:00am.  Qualifying starts at 10:30am" },
+  { date: "2026-08-16", title: "Bodi's 3rd heist",          notes: "Doors open at 8:00am.  Qualifying starts at 10:30am" },
   /**
   END: UPDATE HERE
   **/
