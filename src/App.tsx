@@ -14,7 +14,6 @@ export default function App() {
       <AboutSection />
       <MembershipSection />
       <ClassesSection />
-      /* <ShopSection /> */
     </Layout>
   );
 }
