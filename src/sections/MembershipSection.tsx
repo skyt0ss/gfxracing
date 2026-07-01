@@ -21,8 +21,6 @@ const plans = [
     features: [
       'Unlimited track sessions',
       'All scale sections',
-      'Priority event booking',
-      'Members-only lounge',
     ],
     featured: true,
   },
